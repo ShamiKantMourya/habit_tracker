@@ -9,7 +9,7 @@
 }
 .text {
     margin-top: 10px;
-    height: 200px;
+    height: 220px;
     width: 200px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.521);
@@ -25,19 +25,45 @@
     border: 1px soild black;
     background-color: aqua;
     padding: 5px 5px;
+    margin-left: 10px;
 }
 .task{
-    display: flex;
-    height: 120px;
+    height: 220px;
     width: 200px;
-    justify-content: space-evenly;
-    flex-direction: column;
 }
-.btn{
+.qwer{
     display: flex;
-    flex-direction: column;
+}
+.btn {
+    display: flex;
+}
+.btn button {
+    margin:0px 5px ;
 }
 .task img{
-    height: 100%;
-    width: 100%;
+    padding: 5px 5px;
+    height: 150px;
+    width: 180px;
+}
+.button {
+    margin: 5px;
+}
+.button button{
+    margin: 0px 5px;
+    border-radius: 5px;
+}
+.container h1{
+    color: rgb(245, 245, 245);
+}
+.container{
+    background-color: rgba(101, 91, 243, 0.815);
+   padding: 10px 10px;
+}
+.container select{
+    padding: 2px;
+    border-radius: 5px;
+}
+.container input{
+    padding: 5px;
+    border-radius: 5px;
 }
