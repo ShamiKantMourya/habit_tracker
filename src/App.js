@@ -19,6 +19,17 @@ function App() {
       console.log(error);
     }
   };
+  const deleteHabit = (obj) => {
+    const newHabitData = habits?.map((habit) => {
+      if(habit.id === obj.id) {
+        
+      }
+    });
+    // setHabits(newHabitData);
+  };
+  const updatetask = (obj) => {
+
+  };
   useEffect(() => {
     getData();
   }, []);
@@ -27,7 +38,7 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={
-          <Homepage habits = {habits} />
+          <Homepage habits = {habits}  deleteHabit = {deleteHabit} updatetask = {updatetask} />
           }></Route>
           <Route path='/addHabit' element={<AddHabit />}></Route>
         </Routes>
