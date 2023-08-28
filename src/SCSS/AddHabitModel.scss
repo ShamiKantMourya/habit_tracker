@@ -1,0 +1,59 @@
+@import "./mixin";
+
+$text-color: #fffff0;
+$btn-color: #7956FF;
+
+//Basic styling of habit-model
+.habit-model {
+  @include flexbox(center);
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  margin: 0px 2rem;
+
+  .bg-model{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  .habit-model-box {
+    @include flexbox(space-between);
+    flex-direction: column;
+    height: 40rem;
+    width: 100%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .habit-model-box * {
+      border: none;
+      outline: none;
+    }
+    .add-habit-text{
+        color: $text-color;
+        font-size: 25px;
+    }
+    .enter-habit,
+    .habit-image-url,
+    .repeat,
+    .goal,
+    .timeOfDay,
+    .startDate {
+      @include flexbox(space-between);
+      flex-direction: column;
+    }
+  }
+}
+
+//Styling of inputs and labels
+.habit-model-box .repeat-goal{
+ 
+}
