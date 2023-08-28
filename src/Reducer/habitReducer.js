@@ -1,23 +1,25 @@
+import {createReducer} from "@reduxjs/toolkit";
+
 export const initialState = {
   Habits: [],
   Archive: [],
 };
 
-export const reducer = (state, action) => {
-  const { type, payload } = action;
-  switch (type) {
-    case "ADD_HABITS":
-      return {
-        ...state,
-        Habits: [...state.Habits, payload]
-      };
-    case "DELETE_HABITS":
-      return {};
-    case "ARCHIVE_HABITS":
-      return {};
-    case "EDIT_HABITS":
-      return {};
-    default:
-      return state;
+export const Reducer = createReducer(initialState,{
+  ADD_HABITS: (state, action) => {
+    state.Habits = [...state.Habits, action.payload]
+  },
+  ADD_ARCHIVE: (state, action) => {
+    state.Archive = [...state.Archive, action.payload]
+  },
+  EDIT_HABIT: (state, action) => {
+    state.Habits = []
+  },
+  DELETE_HABITS: (state, action) => {
+    state.Habits = [...state.Habits].filter((habit) => habit.id !== action.payload.id)
+  },
+  REMOVE_ARCHIVE: (state, action) =>  {
+    state.Archive = [...state.Archive].filter((habit) => habit.id !== action.payload.id)
   }
-};
+
+});
