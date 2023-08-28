@@ -1,22 +1,23 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import { useDispatch } from "react-redux";
 
-import { HabitContext } from "../Context/HabitContext";
+import "../SCSS/AddHabitModel.scss";
 
 const AddHabitModel = () => {
   const [habit, setHabit] = useState({
     name: "",
+    imageUrl: "",
     repeat: "",
     goal: "",
     timeOfDay: "",
     startDate: "",
   });
-
-  const { habitDispatch } = useContext(HabitContext);
+  const dispatch = useDispatch();
 
   const addHabitHandler = () => {
-    habitDispatch({
+    dispatch({
       type: "ADD_HABITS",
       payload: { ...habit, id: uuid() },
     });
@@ -24,6 +25,7 @@ const AddHabitModel = () => {
   const clearHabitHandler = () => {
     setHabit({
       name: "",
+      imageUrl: "",
       repeat: "",
       goal: "",
       timeOfDay: "",
@@ -34,22 +36,44 @@ const AddHabitModel = () => {
 
   return (
     <div className="habit-model">
+      <div className="bg-model"></div>
       <div className="habit-model-box">
+        <h3 className="add-habit-text">Add Habit</h3>
+        <div className="enter-habit">
+          <label>Enter Your Habit</label>
+          <input
+            type="text"
+            placeholder="Enter habit"
+            value={habit.name}
+            required
+            onChange={(event) =>
+              setHabit({
+                ...habit,
+                name: event.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="habit-image-url">
+          <label>Add Image Url</label>
         <input
           type="text"
-          placeholder="Enter habit"
-          value={habit.name}
+          placeholder="Add habit image url"
+          value={habit.imageUrl}
           onChange={(event) =>
             setHabit({
               ...habit,
-              name: event.target.value,
+              imageUrl: event.target.value,
             })
           }
         />
+        </div>
         <div className="repeat-goal">
           <div className="repeat">
+            <label>Repeat</label>
             <select
               defaultValue={"Select Repeat"}
+              required
               onChange={(event) =>
                 setHabit({
                   ...habit,
@@ -64,8 +88,10 @@ const AddHabitModel = () => {
             </select>
           </div>
           <div className="goal">
+            <label>Goal</label>
             <select
               defaultValue={"Select goal"}
+              required
               onChange={(event) =>
                 setHabit({
                   ...habit,
@@ -82,8 +108,10 @@ const AddHabitModel = () => {
         </div>
         <div className="timeOfDay-startDate">
           <div className="timeOfDay">
+            <label>Time Of Day</label>
             <select
               defaultValue={"set time of day"}
+              required
               onChange={(event) =>
                 setHabit({ ...habit, timeOfDay: event.target.value })
               }
@@ -96,10 +124,12 @@ const AddHabitModel = () => {
             </select>
           </div>
           <div className="startDate">
+            <label>Select Date</label>
             <input
               type="date"
               name="date"
               placeholder="DD/MM/YYYY"
+              required
               onChange={(event) =>
                 setHabit({ ...habit, startDate: event.target.value })
               }
