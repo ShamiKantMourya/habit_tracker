@@ -1,0 +1,4 @@
+@mixin flexbox ($arg){
+    display: flex;
+    justify-content: $arg;
+}
