@@ -1,0 +1,13 @@
+$bg-color: linear-gradient(138deg, rgba(17,20,40,1) 30%, rgba(28,31,60,1) 59%, rgba(31,35,67,1) 73%, rgba(32,36,69,1) 89%);
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-size: 62.5%;
+    background: $bg-color;
+    min-height: 100vh;
+}
