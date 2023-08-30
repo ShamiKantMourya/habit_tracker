@@ -1,17 +1,16 @@
 @import "./mixin";
 
 $text-color: #fffff0;
-$btn-color: #7956FF;
+$btn-color: #7956ff;
 
 //Basic styling of habit-model
 .habit-model {
-  @include flexbox(center);
+  @include flexbox(center, 100vh);
   align-items: center;
-  height: 100%;
   width: 100%;
-  margin: 0px 2rem;
+  overflow: hidden;
 
-  .bg-model{
+  .bg-model {
     display: flex;
     position: absolute;
     top: 0;
@@ -21,9 +20,8 @@ $btn-color: #7956FF;
   }
 
   .habit-model-box {
-    @include flexbox(space-between);
+    @include flexbox(space-between, 40rem);
     flex-direction: column;
-    height: 40rem;
     width: 100%;
     position: relative;
     background-color: rgba(255, 255, 255, 0.1);
@@ -37,9 +35,9 @@ $btn-color: #7956FF;
       border: none;
       outline: none;
     }
-    .add-habit-text{
-        color: $text-color;
-        font-size: 25px;
+    .add-habit-text {
+      color: $text-color;
+      font-size: 25px;
     }
     .enter-habit,
     .habit-image-url,
@@ -47,13 +45,111 @@ $btn-color: #7956FF;
     .goal,
     .timeOfDay,
     .startDate {
-      @include flexbox(space-between);
+      display: flex;
       flex-direction: column;
     }
   }
 }
 
 //Styling of inputs and labels
-.habit-model-box .repeat-goal{
- 
+.habit-model-box {
+  .enter-habit,
+  .habit-image-url {
+    @include flexbox(space-between, 5rem);
+    width: 100%;
+
+    label {
+      color: $text-color;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    input {
+      @include flexbox(center, 3.4rem);
+      align-items: center;
+      background-color: rgba(255,255,255,0.2);
+      border-radius: 5px;
+      padding: 0px 10px;
+      color: $text-color;
+
+      &::placeholder{
+        color: $text-color
+      }
+    }
+  }
+  .repeat-goal,
+  .timeOfDay-startDate {
+    @include flexbox(space-between, 5rem);
+    align-items: center;
+
+    label {
+      color: $text-color;
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance:none;
+      appearance: none;
+      outline: none;
+      box-shadow: none;
+      background: rgba(255,255,255,0.2);
+      color: $text-color;
+      height: 3rem;
+      width: 14rem;
+      padding: 5px 5px;
+      display: flex;
+      border-radius: 5px;
+      flex: 1;
+      cursor: pointer;
+      box-sizing: border-box;
+      select::-ms-expand{
+        display: none;
+      }
+    }
+    input {
+      @include flexbox(center, 3.4rem);
+      align-items: center;
+      width: 14rem;
+      background-color:rgba(255,255,255,0.2);
+      padding: 0px 10px;
+      border-radius: 5px;
+      outline: none; 
+      color: $text-color;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator{
+      padding: 0px 5px;
+      color: $text-color
+    }
+  }
+  .add-habit-btn {
+    @include flexbox(flex-end, 5rem);
+    align-items: center;
+    margin: 0px 9px;
+    width: 100%;
+
+    button {
+      border: none;
+      outline: none;
+      background: none;
+      font-weight: 500;
+      font-size: 15px;
+      color: $text-color;
+      cursor: pointer;
+      height: 3.4rem;
+      align-items: center;
+      padding: 5px 5px;
+      margin: 0px 10px;
+      width: 7rem;
+     
+
+      &:hover {
+        border: 1px solid grey;
+        border-radius: 5px;
+        background-color: $btn-color;
+      }
+    }
+  }
 }
