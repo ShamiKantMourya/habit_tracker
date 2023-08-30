@@ -1,11 +1,12 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuid } from "uuid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import "../SCSS/AddHabitModel.scss";
 
 const AddHabitModel = () => {
+const {Habits} = useSelector(state => state.habits);
   const [habit, setHabit] = useState({
     name: "",
     imageUrl: "",
@@ -23,17 +24,14 @@ const AddHabitModel = () => {
     });
   };
   const clearHabitHandler = () => {
-    setHabit({
-      name: "",
-      imageUrl: "",
-      repeat: "",
-      goal: "",
-      timeOfDay: "",
-      startDate: "",
+    dispatch({
+      type: "SET_HABITS",
+      payload: true
     });
-    console.log("clicked discard");
   };
-
+useEffect(() => {
+localStorage.setItem("HabitData", JSON.stringify(Habits));
+},[Habits]);
   return (
     <div className="habit-model">
       <div className="bg-model"></div>
@@ -81,7 +79,7 @@ const AddHabitModel = () => {
                 })
               }
             >
-              <option value={"Select Repeat"}>Select repeat</option>
+              <option value={"select Repeat"} disabled>Select repeat</option>
               <option value={"daily"}>Daily</option>
               <option value={"weekly"}>Weekly</option>
               <option value={"monthly"}>Monthly</option>
@@ -99,7 +97,7 @@ const AddHabitModel = () => {
                 })
               }
             >
-              <option value={"Select goal"}>Select goal</option>
+              <option value={"Select goal"} disabled>Select goal</option>
               <option value={"one time a day"}>One time a day</option>
               <option value={"two times a day"}>Two times a day</option>
               <option value={"three times a day"}>Three times a day</option>
@@ -116,7 +114,7 @@ const AddHabitModel = () => {
                 setHabit({ ...habit, timeOfDay: event.target.value })
               }
             >
-              <option value={"set time of day"}>Select time</option>
+              <option value={"set time of day"} disabled>Select time</option>
               <option value={"morning"}>Morning</option>
               <option value={"afternoon"}>Afternoon</option>
               <option value={"evening"}>Evening</option>
