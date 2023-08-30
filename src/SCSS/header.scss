@@ -1,0 +1,48 @@
+@import "./mixin";
+
+$logo-color: white;
+$text-color: #fffff0;
+
+.header {
+  @include flexbox(space-between, 4rem);
+  align-items: center;
+  width: 100%;
+  margin: 10px 5px;
+  overflow: hidden;
+  h3 {
+    color: $logo-color;
+    font-size: 2rem;
+    font-weight: 300;
+  }
+  .search-bar {
+    @include flexbox(center, 3rem);
+    border: 1px solid grey;
+    width: 20rem;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+
+    input {
+      @include flexbox(center, 3rem);
+     @include inputbtn;
+     align-items: center;
+     width: 100%;
+      padding: 0px 10px;
+      color: white;
+      font-weight: 500;
+      &::placeholder{
+        color: rgba(255, 255, 255, 0.548);
+      }
+    }
+
+    button{
+        @include flexbox(center, 3rem);
+        @include inputbtn;
+        padding: 0px 5px;
+        align-items: center;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.644);
+        cursor: pointer;
+    }
+  }
+}

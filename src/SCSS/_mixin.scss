@@ -1,4 +1,11 @@
-@mixin flexbox ($arg){
+@mixin flexbox ($arg, $arg1){
     display: flex;
     justify-content: $arg;
+    height: $arg1;
+}
+
+@mixin inputbtn{
+    border: none;
+    background: none;
+    outline: none;
 }
