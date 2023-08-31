@@ -31,7 +31,7 @@ export const initialState = {
     },
     {
       id: "3",
-      imageUrl: "https://www.freepik.com/free-vector/city-runner-cartoon-concept-with-young-couple-running-park-vector-illustration_39094727.htm#query=jogging&position=18&from_view=search&track=sph",
+      imageUrl: "https://img.freepik.com/free-vector/city-runner-cartoon-concept-with-young-couple-running-park-vector-illustration_1284-81130.jpg?w=740&t=st=1693407775~exp=1693408375~hmac=22659aea353d3bb00d40e3a7638f5b90e7b7ce5236a37397b75b996b7ba3e3ff",
       name: "Running",
       repeat: "Daily",
       goal: "1 time daily",
@@ -53,7 +53,7 @@ export const Reducer = createReducer(initialState,{
     state.Habits = []
   },
   DELETE_HABITS: (state, action) => {
-    state.Habits = [...state.Habits].filter((habit) => habit.id !== action.payload.id)
+    state.Habits = [...state.Habits].filter((habit) => habit.id !== action.payload)
   },
   REMOVE_ARCHIVE: (state, action) =>  {
     state.Archive = [...state.Archive].filter((habit) => habit.id !== action.payload.id)
