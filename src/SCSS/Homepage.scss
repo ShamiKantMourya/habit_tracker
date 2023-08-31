@@ -1,0 +1,97 @@
+@import "./mixin";
+$habit-txt: #7956ff;
+
+.homepage {
+  display: grid;
+  grid-template-columns: 2rem 4fr 2rem;
+
+  .homepage-content {
+    grid-column: 2/3;
+    @include flexbox(center, 100%);
+    width: 100%;
+    flex-direction: column;
+  }
+}
+.habit-data {
+  @include flexbox(center, 100%);
+  width: 100%;
+  flex-wrap: wrap;
+  .habit-box {
+    @include flexbox(flex-start, 18rem);
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 7px;
+    margin: 10px 0px;
+    padding: 0px 5px;
+    filter: grayscale(100%);
+    
+    .img-box {
+      @include flexbox(center, 18rem);
+      width: 100%;
+      padding: 5px 0px;
+
+      img {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+    .habit-txt {
+      font-size: 30px;
+      font-weight: 600;
+      color: $habit-txt;
+      padding: 0px 5px;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+    }
+  }
+  .habit-data-box {
+    width: 100%;
+    position: relative;
+  }
+}
+.add-remove-archive {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 0;
+  padding: 0px 5px;
+  height: 3rem;
+
+  button:nth-child(1) {
+    color: $habit-txt;
+    background-color: white;
+  }
+  button:nth-child(2) {
+    color: red;
+    background-color: white;
+  }
+  button:nth-child(3) {
+    color: #7956ff;
+    background-color: white;
+  }
+  button {
+    @include flexbox(center, 3rem);
+    @include inputbtn;
+    font-size: 20px;
+    border: 2px solid grey;
+    border-radius: 50%;
+    margin: 0px 2px;
+    align-items: center;
+    width: 3rem;
+  }
+}
+.habit-box:hover{
+    .add-remove-archive{
+        display: flex;
+    }
+}
+.habit-box:hover{
+    filter: grayscale(0%);
+}
