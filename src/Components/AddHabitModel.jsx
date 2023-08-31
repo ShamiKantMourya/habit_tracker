@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../SCSS/AddHabitModel.scss";
 
 const AddHabitModel = () => {
-const {Habits} = useSelector(state => state.habits);
+  const { Habits } = useSelector((state) => state.habits);
   const [habit, setHabit] = useState({
     name: "",
     imageUrl: "",
@@ -26,15 +26,23 @@ const {Habits} = useSelector(state => state.habits);
   const clearHabitHandler = () => {
     dispatch({
       type: "SET_HABITS",
-      payload: true
+      payload: false,
     });
   };
-useEffect(() => {
-localStorage.setItem("HabitData", JSON.stringify(Habits));
-},[Habits]);
+  useEffect(() => {
+    localStorage.setItem("HabitData", JSON.stringify(Habits));
+  }, [Habits]);
   return (
     <div className="habit-model">
-      <div className="bg-model"></div>
+      <div
+        className="bg-model"
+        onClick={() =>
+          dispatch({
+            type: "SET_HABITS",
+            payload: false,
+          })
+        }
+      ></div>
       <div className="habit-model-box">
         <h3 className="add-habit-text">Add Habit</h3>
         <div className="enter-habit">
@@ -54,17 +62,17 @@ localStorage.setItem("HabitData", JSON.stringify(Habits));
         </div>
         <div className="habit-image-url">
           <label>Add Image Url</label>
-        <input
-          type="text"
-          placeholder="Add habit image url"
-          value={habit.imageUrl}
-          onChange={(event) =>
-            setHabit({
-              ...habit,
-              imageUrl: event.target.value,
-            })
-          }
-        />
+          <input
+            type="text"
+            placeholder="Add habit image url"
+            value={habit.imageUrl}
+            onChange={(event) =>
+              setHabit({
+                ...habit,
+                imageUrl: event.target.value,
+              })
+            }
+          />
         </div>
         <div className="repeat-goal">
           <div className="repeat">
@@ -79,7 +87,9 @@ localStorage.setItem("HabitData", JSON.stringify(Habits));
                 })
               }
             >
-              <option value={"select Repeat"} disabled>Select repeat</option>
+              <option value={"select Repeat"} disabled>
+                Select repeat
+              </option>
               <option value={"daily"}>Daily</option>
               <option value={"weekly"}>Weekly</option>
               <option value={"monthly"}>Monthly</option>
@@ -97,7 +107,9 @@ localStorage.setItem("HabitData", JSON.stringify(Habits));
                 })
               }
             >
-              <option value={"Select goal"} disabled>Select goal</option>
+              <option value={"Select goal"} disabled>
+                Select goal
+              </option>
               <option value={"one time a day"}>One time a day</option>
               <option value={"two times a day"}>Two times a day</option>
               <option value={"three times a day"}>Three times a day</option>
@@ -114,7 +126,9 @@ localStorage.setItem("HabitData", JSON.stringify(Habits));
                 setHabit({ ...habit, timeOfDay: event.target.value })
               }
             >
-              <option value={"set time of day"} disabled>Select time</option>
+              <option value={"set time of day"} disabled>
+                Select time
+              </option>
               <option value={"morning"}>Morning</option>
               <option value={"afternoon"}>Afternoon</option>
               <option value={"evening"}>Evening</option>
