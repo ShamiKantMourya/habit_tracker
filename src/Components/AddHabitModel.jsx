@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "../SCSS/AddHabitModel.scss";
 
 const AddHabitModel = () => {
-  const { Habits } = useSelector((state) => state.habits);
+  const { Habits, habitId } = useSelector((state) => state.habits);
   const [habit, setHabit] = useState({
     name: "",
     imageUrl: "",
@@ -16,12 +16,20 @@ const AddHabitModel = () => {
     startDate: "",
   });
   const dispatch = useDispatch();
-
-  const addHabitHandler = () => {
-    dispatch({
-      type: "ADD_HABITS",
-      payload: { ...habit, id: uuid() },
-    });
+  const selectedHabit = Habits?.find((item) => item.id === habitId);
+  console.log(selectedHabit, "selectedHabit");
+  const habitHandler = () => {
+ if(habitId){
+dispatch({
+  type: "EDIT_HABIT",
+  payload:""
+})
+ }else{
+  dispatch({
+    type: "ADD_HABITS",
+    payload: { ...habit, id: uuid() },
+  });
+ }
   };
   const clearHabitHandler = () => {
     dispatch({
@@ -50,7 +58,8 @@ const AddHabitModel = () => {
           <input
             type="text"
             placeholder="Enter habit"
-            value={habit.name}
+            defaultValue={habitId ? selectedHabit.name : habit.name}
+            // value={habit.name}
             required
             onChange={(event) =>
               setHabit({
@@ -65,7 +74,8 @@ const AddHabitModel = () => {
           <input
             type="text"
             placeholder="Add habit image url"
-            value={habit.imageUrl}
+            defaultValue={habitId ? selectedHabit.imageUrl : habit.imageUrl}
+            // value={habit.imageUrl}
             onChange={(event) =>
               setHabit({
                 ...habit,
@@ -78,7 +88,7 @@ const AddHabitModel = () => {
           <div className="repeat">
             <label>Repeat</label>
             <select
-              defaultValue={"Select Repeat"}
+              defaultValue={habitId ? selectedHabit.repeat : "Select Repeat"}
               required
               onChange={(event) =>
                 setHabit({
@@ -98,7 +108,7 @@ const AddHabitModel = () => {
           <div className="goal">
             <label>Goal</label>
             <select
-              defaultValue={"Select goal"}
+              defaultValue={habitId ? selectedHabit.goal : "Select goal"}
               required
               onChange={(event) =>
                 setHabit({
@@ -120,7 +130,7 @@ const AddHabitModel = () => {
           <div className="timeOfDay">
             <label>Time Of Day</label>
             <select
-              defaultValue={"set time of day"}
+              defaultValue={habitId ? selectedHabit.timeOfDay : "set time of day"}
               required
               onChange={(event) =>
                 setHabit({ ...habit, timeOfDay: event.target.value })
@@ -141,6 +151,7 @@ const AddHabitModel = () => {
               type="date"
               name="date"
               placeholder="DD/MM/YYYY"
+              defaultValue={habitId ? selectedHabit.startDate : ""}
               required
               onChange={(event) =>
                 setHabit({ ...habit, startDate: event.target.value })
@@ -150,7 +161,7 @@ const AddHabitModel = () => {
         </div>
         <div className="add-habit-btn">
           <button onClick={clearHabitHandler}>Discard</button>
-          <button onClick={addHabitHandler}>Save</button>
+          <button onClick={habitHandler}>Save</button>
         </div>
       </div>
     </div>
