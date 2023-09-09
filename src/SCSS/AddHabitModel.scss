@@ -67,13 +67,13 @@ $btn-color: #7956ff;
     input {
       @include flexbox(center, 3.4rem);
       align-items: center;
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255, 255, 255, 0.2);
       border-radius: 5px;
       padding: 0px 10px;
       color: $text-color;
 
-      &::placeholder{
-        color: $text-color
+      &::placeholder {
+        color: $text-color;
       }
     }
   }
@@ -91,11 +91,11 @@ $btn-color: #7956ff;
     select {
       -webkit-appearance: none;
       -moz-appearance: none;
-      -ms-appearance:none;
+      -ms-appearance: none;
       appearance: none;
       outline: none;
       box-shadow: none;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255, 255, 255, 0.2);
       color: $text-color;
       height: 3rem;
       width: 14rem;
@@ -105,7 +105,7 @@ $btn-color: #7956ff;
       flex: 1;
       cursor: pointer;
       box-sizing: border-box;
-      select::-ms-expand{
+      select::-ms-expand {
         display: none;
       }
     }
@@ -113,15 +113,15 @@ $btn-color: #7956ff;
       @include flexbox(center, 3.4rem);
       align-items: center;
       width: 14rem;
-      background-color:rgba(255,255,255,0.2);
+      background-color: rgba(255, 255, 255, 0.2);
       padding: 0px 10px;
       border-radius: 5px;
-      outline: none; 
+      outline: none;
       color: $text-color;
     }
-    input[type="date"]::-webkit-calendar-picker-indicator{
+    input[type="date"]::-webkit-calendar-picker-indicator {
       padding: 0px 5px;
-      color: $text-color
+      color: $text-color;
     }
   }
   .add-habit-btn {
@@ -143,7 +143,6 @@ $btn-color: #7956ff;
       padding: 5px 5px;
       margin: 0px 10px;
       width: 7rem;
-     
 
       &:hover {
         border: 1px solid grey;
@@ -151,5 +150,18 @@ $btn-color: #7956ff;
         background-color: $btn-color;
       }
     }
+  }
+}
+
+//Tablets Responsive
+
+@media screen and (min-width: 768px) {
+  .habit-model {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    top: 7%;
+    left: 10%;
   }
 }
