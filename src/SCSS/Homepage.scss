@@ -98,3 +98,34 @@ $habit-txt: #7956ff;
 .habit-box:hover{
     filter: grayscale(0%);
 }
+
+
+//Responsive for Tab
+
+@media screen and (min-width:768px) {
+  .habit-data{
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+
+    .habit-box{
+      display: flex;
+      height: 20rem;
+      width: 35rem;
+      margin: 5px 5px;
+
+      .img-box{
+        height: 20rem;
+        img{
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  .habit-data-box{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}
