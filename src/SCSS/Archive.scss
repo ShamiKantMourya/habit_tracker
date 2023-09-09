@@ -33,3 +33,25 @@
     color: rgba(255, 255, 255, 0.658);
   }
 }
+
+@media screen and (min-width: 768px) {
+  .archive-route{
+    height: 5rem;
+    margin: 5px 0px 15px 0px;
+
+    a{
+      font-size: 30px;
+
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .navigate-btn{
+    button{
+      font-size: 25px;
+      margin: 10px 0px;
+    }
+  }
+}
