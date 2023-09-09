@@ -1,0 +1,35 @@
+@import "./mixin";
+
+.archive {
+  display: grid;
+  grid-template-columns: 2rem 4fr 2rem;
+
+  .archive-content {
+    grid-column: 2/3;
+    @include flexbox(center, 100%);
+    flex-direction: column;
+  }
+}
+.navigate-btn {
+  margin: 5px 5px;
+  button {
+    @include inputbtn;
+    font-size: 15px;
+    color: rgba(245, 245, 245, 0.712);
+    cursor: pointer;
+  }
+}
+
+//Archive Page
+.archive-route {
+  @include flexbox(flex-end, 3rem);
+  align-items: center;
+
+  a {
+    display: flex;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.658);
+  }
+}
