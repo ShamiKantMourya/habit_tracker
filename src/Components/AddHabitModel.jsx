@@ -19,17 +19,17 @@ const AddHabitModel = () => {
   const selectedHabit = Habits?.find((item) => item.id === habitId);
   console.log(selectedHabit, "selectedHabit");
   const habitHandler = () => {
- if(habitId){
-dispatch({
-  type: "EDIT_HABIT",
-  payload:""
-})
- }else{
-  dispatch({
-    type: "ADD_HABITS",
-    payload: { ...habit, id: uuid() },
-  });
- }
+    if (habitId) {
+      dispatch({
+        type: "EDIT_HABIT",
+        payload: "",
+      });
+    } else {
+      dispatch({
+        type: "ADD_HABITS",
+        payload: { ...habit, id: uuid() },
+      });
+    }
   };
   const clearHabitHandler = () => {
     dispatch({
@@ -130,7 +130,9 @@ dispatch({
           <div className="timeOfDay">
             <label>Time Of Day</label>
             <select
-              defaultValue={habitId ? selectedHabit.timeOfDay : "set time of day"}
+              defaultValue={
+                habitId ? selectedHabit.timeOfDay : "set time of day"
+              }
               required
               onChange={(event) =>
                 setHabit({ ...habit, timeOfDay: event.target.value })
