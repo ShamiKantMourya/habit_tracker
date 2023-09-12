@@ -5,10 +5,10 @@ import Header from "../Components/Header";
 import { useNavigate } from "react-router-dom";
 
 import "../SCSS/Archive.scss";
+import AddHabitModel from "../Components/AddHabitModel";
 
 const Archive = () => {
-  const { Archive } = useSelector((state) => state.habits);
-  // console.log(Archive, "Archive");
+  const { Archive, habitModel } = useSelector((state) => state.habits);
   const navigate = useNavigate();
   return (
     <div className="archive">
@@ -19,11 +19,15 @@ const Archive = () => {
             Back
           </button>
         </div>
-        <div className="habit-data">
-          {Archive?.map((habit) => (
-            <Habit key={habit.id} habit={habit} />
-          ))}
-        </div>
+        {habitModel ? (
+          <AddHabitModel />
+        ) : (
+          <div className="habit-data">
+            {Archive?.map((habit) => (
+              <Habit key={habit.id} habit={habit} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
