@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { v4 as uuid } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -37,9 +37,9 @@ const AddHabitModel = () => {
       payload: false,
     });
   };
-  useEffect(() => {
-    localStorage.setItem("HabitData", JSON.stringify(Habits));
-  }, [Habits]);
+  // useEffect(() => {
+  //   localStorage.setItem("HabitData", JSON.stringify(Habits));
+  // }, [Habits]);
   return (
     <div className="habit-model">
       <div
