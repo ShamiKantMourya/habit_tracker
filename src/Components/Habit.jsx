@@ -1,4 +1,5 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { FiEdit } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
 import { BiSolidArchiveOut, BiSolidArchiveIn } from "react-icons/bi";
@@ -8,6 +9,7 @@ const Habit = ({ habit }) => {
   const { id, imageUrl, name } = habit;
   const { Archive } = useSelector((state) => state.habits);
   const dispatch = useDispatch();
+  const location = useLocation();
   const isInArchive = Archive?.some((item) => item.id === id);
 
   const deleteHabitHandler = (id) => {
@@ -32,12 +34,12 @@ const Habit = ({ habit }) => {
   const editHabitHandler = (id) => {
     dispatch({
       type: "SET_HABITS",
-      payload: true
+      payload: true,
     });
     dispatch({
       type: "SET_HABIT_ID",
-      payload: id
-    })
+      payload: id,
+    });
   };
 
   return (
@@ -50,11 +52,13 @@ const Habit = ({ habit }) => {
         <button onClick={() => editHabitHandler(id)}>
           <FiEdit />
         </button>
-        <button onClick={() => deleteHabitHandler(id)}>
-          <MdDelete />
-        </button>
+        {location.pathname !== "/archive" && (
+          <button onClick={() => deleteHabitHandler(id)}>
+            <MdDelete />
+          </button>
+        )}
         <button onClick={() => archiveHandler(id)}>
-          {isInArchive ? <BiSolidArchiveOut /> : <BiSolidArchiveIn/>}
+          {isInArchive ? <BiSolidArchiveOut /> : <BiSolidArchiveIn />}
         </button>
       </div>
     </div>
